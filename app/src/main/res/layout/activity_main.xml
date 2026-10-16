@@ -5,15 +5,55 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/azul_fondo"
+    >
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_width="207dp"
+        android:layout_height="98dp"
+        android:text="Iniciar sesion"
+        android:textColor="@color/azul_principal"
+        android:textSize="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.145" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="47dp"
+        android:backgroundTint="@color/azul_claro"
+        android:hint="Nombre de usuario"
+        android:textColor="@color/azul_claro"
+        android:textColorHint="@color/azul_claro"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="220dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/azul_claro"
+        android:hint="Contraseña"
+        android:textColor="@color/azul_claro"
+        android:textColorHint="@color/azul_claro"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="340dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="107dp"
+        android:layout_height="68dp"
+        android:backgroundTint="@color/azul_principal"
+        android:text="Aceptar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.871"
+        tools:layout_editor_absoluteX="152dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
