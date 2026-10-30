@@ -2,13 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
 }
-
 android {
     namespace = "com.my.first.appdecontactos"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.my.first.appdecontactos"
+        applicationId = "com.my.first.appdecontactos2"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -37,6 +36,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth")
 
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)

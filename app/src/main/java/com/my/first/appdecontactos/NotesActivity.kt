@@ -1,3 +1,4 @@
+
 package com.my.first.appdecontactos
 
 import android.content.Intent
@@ -13,6 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -29,20 +31,40 @@ class NotesActivity : AppCompatActivity() {
     private lateinit var adapter: NotesAdapter
     private val notesList = mutableListOf<Note>()
 
-    private var usuario: String = "Invitado"
+    private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
+
+    private var usuario: String = "Invitado"
+    private var uid: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_notes)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById(R.id.main)
+        ) { v, insets ->
+            val systemBars =
+                insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
             insets
         }
 
+        val currentUser = auth.currentUser
+
+        if (currentUser == null) {
+            volverAlLogin()
+            return
+        }
+
+        uid = currentUser.uid
         usuario = intent.getStringExtra("EXTRA_USUARIO") ?: "Invitado"
 
         tvWelcomeUser = findViewById(R.id.tvWelcomeUser)
@@ -53,7 +75,8 @@ class NotesActivity : AppCompatActivity() {
         rvNotes = findViewById(R.id.rvNotes)
         tvEmptyNotes = findViewById(R.id.tvEmptyNotes)
 
-        tvWelcomeUser.text = getString(R.string.bienvenido_usuario, usuario)
+        tvWelcomeUser.text =
+            getString(R.string.bienvenido_usuario, usuario)
 
         adapter = NotesAdapter(notesList) { note ->
             deleteNote(note)
@@ -67,40 +90,58 @@ class NotesActivity : AppCompatActivity() {
             val content = etNoteContent.text.toString().trim()
 
             if (title.isEmpty() || content.isEmpty()) {
-                Toast.makeText(this, getString(R.string.error_campos_nota), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Completa el título y el contenido.",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 addNote(title, content)
             }
         }
 
         btnCerrarSesion.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
+            auth.signOut()
+            volverAlLogin()
         }
 
         listenToNotes()
     }
 
-    private fun listenToNotes() {
+    private fun notesCollection() =
         db.collection("users")
-            .document(usuario)
+            .document(uid)
             .collection("notes")
+
+    private fun listenToNotes() {
+        notesCollection()
             .orderBy("timestamp", Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, error ->
+
                 if (error != null) {
+                    Toast.makeText(
+                        this,
+                        "Error al cargar las notas: ${error.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
                     return@addSnapshotListener
                 }
 
                 if (snapshot != null) {
                     notesList.clear()
+
                     for (doc in snapshot.documents) {
-                        val title = doc.getString("title") ?: ""
-                        val content = doc.getString("content") ?: ""
-                        val timestamp = doc.getLong("timestamp") ?: System.currentTimeMillis()
-                        notesList.add(Note(id = doc.id, title = title, content = content, timestamp = timestamp))
+                        notesList.add(
+                            Note(
+                                id = doc.id,
+                                title = doc.getString("title") ?: "",
+                                content = doc.getString("content") ?: "",
+                                timestamp = doc.getLong("timestamp")
+                                    ?: System.currentTimeMillis()
+                            )
+                        )
                     }
+
                     adapter.updateNotes(notesList)
                     updateEmptyState()
                 }
@@ -114,48 +155,52 @@ class NotesActivity : AppCompatActivity() {
             "timestamp" to System.currentTimeMillis()
         )
 
-        db.collection("users")
-            .document(usuario)
-            .collection("notes")
+        btnAddNote.isEnabled = false
+
+        notesCollection()
             .add(noteData)
             .addOnSuccessListener {
+                btnAddNote.isEnabled = true
                 etNoteTitle.text.clear()
                 etNoteContent.text.clear()
-                Toast.makeText(this, getString(R.string.nota_agregada), Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(
+                    this,
+                    "Nota guardada correctamente.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-            .addOnFailureListener {
-                // Fallback local en caso de desconexión
-                val localNote = Note(
-                    id = System.currentTimeMillis().toString(),
-                    title = title,
-                    content = content
-                )
-                notesList.add(0, localNote)
-                adapter.updateNotes(notesList)
-                updateEmptyState()
-                etNoteTitle.text.clear()
-                etNoteContent.text.clear()
-                Toast.makeText(this, getString(R.string.nota_agregada), Toast.LENGTH_SHORT).show()
+            .addOnFailureListener { e ->
+                btnAddNote.isEnabled = true
+
+                Toast.makeText(
+                    this,
+                    "No se pudo guardar la nota: ${e.localizedMessage}",
+                    Toast.LENGTH_LONG
+                ).show()
             }
     }
 
     private fun deleteNote(note: Note) {
-        if (note.id.isNotEmpty()) {
-            db.collection("users")
-                .document(usuario)
-                .collection("notes")
-                .document(note.id)
-                .delete()
-                .addOnSuccessListener {
-                    Toast.makeText(this, getString(R.string.nota_eliminada), Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener {
-                    notesList.remove(note)
-                    adapter.updateNotes(notesList)
-                    updateEmptyState()
-                    Toast.makeText(this, getString(R.string.nota_eliminada), Toast.LENGTH_SHORT).show()
-                }
-        }
+        if (note.id.isEmpty()) return
+
+        notesCollection()
+            .document(note.id)
+            .delete()
+            .addOnSuccessListener {
+                Toast.makeText(
+                    this,
+                    "Nota eliminada.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this,
+                    "No se pudo eliminar: ${e.localizedMessage}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
     }
 
     private fun updateEmptyState() {
@@ -166,5 +211,15 @@ class NotesActivity : AppCompatActivity() {
             tvEmptyNotes.visibility = View.GONE
             rvNotes.visibility = View.VISIBLE
         }
+    }
+
+    private fun volverAlLogin() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags =
+            Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+        startActivity(intent)
+        finish()
     }
 }

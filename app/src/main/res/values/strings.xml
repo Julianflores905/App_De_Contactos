@@ -20,6 +20,10 @@
     <string name="error_email_invalido">Ingresa un correo electrónico válido</string>
     <string name="registro_exitoso">¡Registro completado con éxito!</string>
     <string name="error_usuario_incorrecto">Usuario o contraseña incorrectos</string>
+    <string name="error_cuenta_no_existe">No existe una cuenta con este usuario. Por favor, regístrate primero.</string>
+    <string name="error_contrasena_incorrecta">La contraseña ingresada es incorrecta.</string>
+    <string name="error_usuario_ya_existe">El nombre de usuario ya está registrado. Por favor, elige otro.</string>
+    <string name="verificando_datos">Verificando en Firebase...</string>
 
     <string name="mis_notas">Mis Notas</string>
     <string name="bienvenido_usuario">Bienvenido, %1$s</string>
