@@ -9,6 +9,31 @@
     android:padding="16dp"
     tools:context=".NotesActivity">
 
+    <!-- Nubes de fondo decorativas -->
+    <ImageView
+        android:id="@+id/bgCloudTopLeft"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="-40dp"
+        android:layout_marginTop="-30dp"
+        android:alpha="0.5"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgCloudBottomRight"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginEnd="-50dp"
+        android:layout_marginBottom="-40dp"
+        android:alpha="0.4"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/tvHeaderTitle"
         android:layout_width="0dp"
@@ -67,6 +92,7 @@
                 android:id="@+id/etNoteTitle"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:autofillHints="none"
                 android:backgroundTint="@color/azul_claro"
                 android:hint="@string/titulo_nota"
                 android:inputType="textCapSentences"
@@ -78,6 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:autofillHints="none"
                 android:backgroundTint="@color/azul_claro"
                 android:hint="@string/contenido_nota"
                 android:inputType="textMultiLine"

@@ -9,69 +9,158 @@
     android:padding="24dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/iniciar_sesion"
-        android:textColor="@color/azul_principal"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
+    <!-- Nubes de fondo decorativas -->
+    <ImageView
+        android:id="@+id/bgCloudTopLeft"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="-40dp"
+        android:layout_marginTop="-30dp"
+        android:alpha="0.7"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgCloudTopRight"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="-30dp"
+        android:alpha="0.5"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgCloudBottomLeft"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="-30dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0.4"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgCloudBottomRight"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginEnd="-50dp"
+        android:layout_marginBottom="-40dp"
+        android:alpha="0.6"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Logo de la app -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/app_notasyllamadas"
+        app:layout_constraintBottom_toTopOf="@+id/cardLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <EditText
-        android:id="@+id/etUsuario"
+    <!-- Card de Iniciar Sesión -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLogin"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:autofillHints="username"
-        android:backgroundTint="@color/azul_claro"
-        android:hint="@string/nombre_usuario"
-        android:inputType="textPersonName"
-        android:textColor="@color/texto_blanco"
-        android:textColorHint="@color/texto_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        app:layout_constraintWidth_max="340dp"
-        app:layout_constraintWidth_percent="0.85" />
-
-    <EditText
-        android:id="@+id/etContrasena"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:autofillHints="password"
-        android:backgroundTint="@color/azul_claro"
-        android:hint="@string/contrasena"
-        android:inputType="textPassword"
-        android:textColor="@color/texto_blanco"
-        android:textColorHint="@color/texto_2"
+        app:cardBackgroundColor="@color/azul_superficie"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnIrARegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsuario"
-        app:layout_constraintWidth_max="340dp"
-        app:layout_constraintWidth_percent="0.85" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+        app:strokeColor="@color/azul_borde"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/iniciar_sesion"
+                android:textColor="@color/azul_principal"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/subtitulo_login"
+                android:textColor="@color/texto_2"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/etUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:autofillHints="username"
+                android:backgroundTint="@color/azul_claro"
+                android:hint="@string/nombre_usuario"
+                android:inputType="textPersonName"
+                android:textColor="@color/texto_blanco"
+                android:textColorHint="@color/texto_2" />
+
+            <EditText
+                android:id="@+id/etContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="password"
+                android:backgroundTint="@color/azul_claro"
+                android:hint="@string/contrasena"
+                android:inputType="textPassword"
+                android:textColor="@color/texto_blanco"
+                android:textColorHint="@color/texto_2" />
+
+            <Button
+                android:id="@+id/btnAceptar"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/azul_principal"
+                android:text="@string/aceptar"
+                android:textColor="@color/texto_blanco"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <Button
-        android:id="@+id/btnAceptar"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/azul_principal"
-        android:text="@string/aceptar"
-        android:textColor="@color/texto_blanco"
-        android:textSize="16sp"
+        android:id="@+id/btnIrARegistro"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/no_tienes_cuenta"
+        android:textColor="@color/azul_claro"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContrasena"
-        app:layout_constraintWidth_max="200dp"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/cardLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

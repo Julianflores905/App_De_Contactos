@@ -21,6 +21,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".NotesActivity"
             android:exported="false" />
     </application>

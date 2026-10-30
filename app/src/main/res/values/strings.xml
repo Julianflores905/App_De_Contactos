@@ -1,11 +1,25 @@
 <resources>
-    <string name="app_name">App de contactos</string>
-    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="app_name">App de Contactos &amp; Notas</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="subtitulo_login">Ingresa tus datos para continuar</string>
     <string name="nombre_usuario">Nombre de usuario</string>
     <string name="contrasena">Contraseña</string>
-    <string name="aceptar">Aceptar</string>
+    <string name="aceptar">Iniciar Sesión</string>
     <string name="error_campos_vacios">Por favor, completa todos los campos</string>
     <string name="inicio_sesion_correcto">¡Sesión iniciada correctamente!</string>
+    <string name="no_tienes_cuenta">¿No tienes una cuenta? Regístrate aquí</string>
+
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="subtitulo_registro">Regístrate para guardar tus notas</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="confirmar_contrasena">Confirmar contraseña</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="error_contrasenas_no_coinciden">Las contraseñas no coinciden</string>
+    <string name="error_contrasena_corta">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_email_invalido">Ingresa un correo electrónico válido</string>
+    <string name="registro_exitoso">¡Registro completado con éxito!</string>
+    <string name="error_usuario_incorrecto">Usuario o contraseña incorrectos</string>
 
     <string name="mis_notas">Mis Notas</string>
     <string name="bienvenido_usuario">Bienvenido, %1$s</string>

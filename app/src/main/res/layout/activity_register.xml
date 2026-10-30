@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul_fondo"
+    android:padding="24dp"
+    tools:context=".RegisterActivity">
+
+    <!-- Nubes de fondo decorativas -->
+    <ImageView
+        android:id="@+id/bgCloudTopLeft"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="-40dp"
+        android:layout_marginTop="-30dp"
+        android:alpha="0.7"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgCloudTopRight"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="-30dp"
+        android:alpha="0.5"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgCloudBottomLeft"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="-30dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0.4"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgCloudBottomRight"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginEnd="-50dp"
+        android:layout_marginBottom="-40dp"
+        android:alpha="0.6"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Header / Logo -->
+    <ImageView
+        android:id="@+id/ivRegisterLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/app_notasyllamadas"
+        app:layout_constraintBottom_toTopOf="@+id/cardRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <!-- Card de Registro -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/azul_superficie"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnIrALogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivRegisterLogo"
+        app:strokeColor="@color/azul_borde"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/tvRegisterTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/crear_cuenta"
+                android:textColor="@color/azul_principal"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRegisterSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/subtitulo_registro"
+                android:textColor="@color/texto_2"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/etRegisterUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:autofillHints="username"
+                android:backgroundTint="@color/azul_claro"
+                android:hint="@string/nombre_usuario"
+                android:inputType="textPersonName"
+                android:textColor="@color/texto_blanco"
+                android:textColorHint="@color/texto_2" />
+
+            <EditText
+                android:id="@+id/etRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="emailAddress"
+                android:backgroundTint="@color/azul_claro"
+                android:hint="@string/correo_electronico"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/texto_blanco"
+                android:textColorHint="@color/texto_2" />
+
+            <EditText
+                android:id="@+id/etRegisterContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="newPassword"
+                android:backgroundTint="@color/azul_claro"
+                android:hint="@string/contrasena"
+                android:inputType="textPassword"
+                android:textColor="@color/texto_blanco"
+                android:textColorHint="@color/texto_2" />
+
+            <EditText
+                android:id="@+id/etRegisterConfirmarContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:autofillHints="newPassword"
+                android:backgroundTint="@color/azul_claro"
+                android:hint="@string/confirmar_contrasena"
+                android:inputType="textPassword"
+                android:textColor="@color/texto_blanco"
+                android:textColorHint="@color/texto_2" />
+
+            <Button
+                android:id="@+id/btnRegistrarse"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/azul_principal"
+                android:text="@string/registrarse"
+                android:textColor="@color/texto_blanco"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/btnIrALogin"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/ya_tienes_cuenta"
+        android:textColor="@color/azul_claro"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardRegister" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

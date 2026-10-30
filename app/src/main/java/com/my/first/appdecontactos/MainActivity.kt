@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etUsuario: EditText
     private lateinit var etContrasena: EditText
     private lateinit var btnAceptar: Button
+    private lateinit var btnIrARegistro: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         etUsuario = findViewById(R.id.etUsuario)
         etContrasena = findViewById(R.id.etContrasena)
         btnAceptar = findViewById(R.id.btnAceptar)
+        btnIrARegistro = findViewById(R.id.btnIrARegistro)
 
         btnAceptar.setOnClickListener {
             val usuario = etUsuario.text.toString().trim()
@@ -46,6 +48,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+        }
+
+        btnIrARegistro.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
