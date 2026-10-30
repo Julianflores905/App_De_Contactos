@@ -118,7 +118,7 @@
                 android:layout_marginTop="20dp"
                 android:autofillHints="username"
                 android:backgroundTint="@color/azul_claro"
-                android:hint="@string/nombre_usuario"
+                android:hint="Correo Electronico"
                 android:inputType="textPersonName"
                 android:textColor="@color/texto_blanco"
                 android:textColorHint="@color/texto_2" />

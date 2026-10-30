@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainCalls"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul_fondo"
+    android:padding="16dp"
+    tools:context=".CallsActivity">
+
+    <!-- Header layout -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/aceptar"
+        android:src="@drawable/ic_cloud_soft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/azul_claro" />
+
+    <TextView
+        android:id="@+id/tvHeaderTitleCalls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/llamadas"
+        android:textColor="@color/azul_principal"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <!-- Card with Phone Number Display & Dialpad -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDialer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="@color/azul_superficie"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack"
+        app:strokeColor="@color/azul_borde"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Number input row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:autofillHints="phone"
+                    android:backgroundTint="@color/azul_claro"
+                    android:hint="@string/ingresa_numero"
+                    android:inputType="phone"
+                    android:textColor="@color/texto_blanco"
+                    android:textColorHint="@color/texto_2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnBackspace"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/eliminar_nota"
+                    android:src="@drawable/ic_backspace"
+                    app:tint="@color/azul_claro" />
+
+            </LinearLayout>
+
+            <!-- Keypad Buttons Grid -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:columnCount="3"
+                android:rowCount="4">
+
+                <!-- 1 -->
+                <Button
+                    android:id="@+id/btnKey1"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="1"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 2 -->
+                <Button
+                    android:id="@+id/btnKey2"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="2"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 3 -->
+                <Button
+                    android:id="@+id/btnKey3"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="3"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 4 -->
+                <Button
+                    android:id="@+id/btnKey4"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="4"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 5 -->
+                <Button
+                    android:id="@+id/btnKey5"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="5"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 6 -->
+                <Button
+                    android:id="@+id/btnKey6"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="6"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 7 -->
+                <Button
+                    android:id="@+id/btnKey7"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="7"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 8 -->
+                <Button
+                    android:id="@+id/btnKey8"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="8"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 9 -->
+                <Button
+                    android:id="@+id/btnKey9"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="9"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- * -->
+                <Button
+                    android:id="@+id/btnKeyStar"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="*"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- 0 -->
+                <Button
+                    android:id="@+id/btnKey0"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="0"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+                <!-- # -->
+                <Button
+                    android:id="@+id/btnKeyHash"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:text="#"
+                    android:textColor="@color/texto_blanco"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/azul_fondo" />
+
+            </GridLayout>
+
+            <!-- Call Button -->
+            <Button
+                android:id="@+id/btnMakeCall"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/azul_principal"
+                android:text="@string/llamar"
+                android:textColor="@color/texto_blanco"
+                android:textSize="16sp"
+                app:icon="@drawable/ic_phone"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="@color/texto_blanco" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- History Header -->
+    <TextView
+        android:id="@+id/tvHistoryHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/historial_llamadas"
+        android:textColor="@color/azul_claro"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardDialer" />
+
+    <TextView
+        android:id="@+id/tvEmptyCalls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/sin_historial"
+        android:textColor="@color/texto_2"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistoryHeader" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCallHistory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistoryHeader"
+        tools:listitem="@layout/item_call" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

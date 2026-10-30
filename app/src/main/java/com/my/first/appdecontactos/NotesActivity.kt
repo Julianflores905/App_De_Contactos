@@ -24,6 +24,7 @@ class NotesActivity : AppCompatActivity() {
     private lateinit var etNoteTitle: EditText
     private lateinit var etNoteContent: EditText
     private lateinit var btnAddNote: Button
+    private lateinit var btnIrALlamadas: Button
     private lateinit var btnCerrarSesion: Button
     private lateinit var rvNotes: RecyclerView
     private lateinit var tvEmptyNotes: TextView
@@ -71,9 +72,16 @@ class NotesActivity : AppCompatActivity() {
         etNoteTitle = findViewById(R.id.etNoteTitle)
         etNoteContent = findViewById(R.id.etNoteContent)
         btnAddNote = findViewById(R.id.btnAddNote)
+        btnIrALlamadas = findViewById(R.id.btnIrALlamadas)
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
         rvNotes = findViewById(R.id.rvNotes)
         tvEmptyNotes = findViewById(R.id.tvEmptyNotes)
+
+        btnIrALlamadas.setOnClickListener {
+            val intent = Intent(this, CallsActivity::class.java)
+            intent.putExtra("EXTRA_USUARIO", usuario)
+            startActivity(intent)
+        }
 
         tvWelcomeUser.text =
             getString(R.string.bienvenido_usuario, usuario)

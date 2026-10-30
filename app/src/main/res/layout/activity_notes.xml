@@ -42,7 +42,7 @@
         android:textColor="@color/azul_principal"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/btnCerrarSesion"
+        app:layout_constraintEnd_toStartOf="@+id/btnIrALlamadas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,10 +53,24 @@
         android:layout_marginTop="2dp"
         android:textColor="@color/texto_2"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnCerrarSesion"
+        app:layout_constraintEnd_toStartOf="@+id/btnIrALlamadas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHeaderTitle"
         tools:text="Bienvenido, Juan" />
+
+    <Button
+        android:id="@+id/btnIrALlamadas"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/llamadas"
+        android:textColor="@color/texto_blanco"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_phone"
+        app:iconTint="@color/texto_blanco"
+        app:layout_constraintBottom_toBottomOf="@+id/tvWelcomeUser"
+        app:layout_constraintEnd_toStartOf="@+id/btnCerrarSesion"
+        app:layout_constraintTop_toTopOf="@+id/tvHeaderTitle" />
 
     <Button
         android:id="@+id/btnCerrarSesion"

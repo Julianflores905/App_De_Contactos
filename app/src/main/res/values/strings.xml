@@ -36,4 +36,11 @@
     <string name="nota_eliminada">Nota eliminada</string>
     <string name="eliminar_nota">Eliminar nota</string>
     <string name="error_campos_nota">Ingresa título y contenido para la nota</string>
+
+    <string name="llamadas">Llamadas</string>
+    <string name="ingresa_numero">Ingresa un número...</string>
+    <string name="llamar">Llamar</string>
+    <string name="historial_llamadas">Historial de Llamadas</string>
+    <string name="sin_historial">No hay llamadas recientes.</string>
+    <string name="seccion_llamadas">Ir a Llamadas</string>
 </resources>
