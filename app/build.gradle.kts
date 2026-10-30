@@ -33,8 +33,8 @@ android {
 }
 
 dependencies {
-    // Firebase BoM, Analytics y Firestore (para guardar contactos)
-    implementation(platform("com.google.firebase:firebase-bom:35.0.0"))
+    // Firebase BoM, Analytics y Firestore (para guardar notas)
+    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore")
 
@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)

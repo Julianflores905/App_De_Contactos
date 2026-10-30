@@ -5,55 +5,73 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="@color/azul_fondo"
-    >
-
+    android:padding="24dp"
+    tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="207dp"
-        android:layout_height="98dp"
-        android:text="Iniciar sesion"
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iniciar_sesion"
         android:textColor="@color/azul_principal"
-        android:textSize="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:layout_width="300dp"
-        android:layout_height="47dp"
-        android:backgroundTint="@color/azul_claro"
-        android:hint="Nombre de usuario"
-        android:textColor="@color/azul_claro"
-        android:textColorHint="@color/azul_claro"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="220dp" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="300dp"
+        android:id="@+id/etUsuario"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints="username"
         android:backgroundTint="@color/azul_claro"
-        android:hint="Contraseña"
-        android:textColor="@color/azul_claro"
-        android:textColorHint="@color/azul_claro"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="340dp" />
+        android:hint="@string/nombre_usuario"
+        android:inputType="textPersonName"
+        android:textColor="@color/texto_blanco"
+        android:textColorHint="@color/texto_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintWidth_max="340dp"
+        app:layout_constraintWidth_percent="0.85" />
+
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints="password"
+        android:backgroundTint="@color/azul_claro"
+        android:hint="@string/contrasena"
+        android:inputType="textPassword"
+        android:textColor="@color/texto_blanco"
+        android:textColorHint="@color/texto_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUsuario"
+        app:layout_constraintWidth_max="340dp"
+        app:layout_constraintWidth_percent="0.85" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="107dp"
-        android:layout_height="68dp"
+        android:id="@+id/btnAceptar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/azul_principal"
-        android:text="Aceptar"
+        android:text="@string/aceptar"
+        android:textColor="@color/texto_blanco"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871"
-        tools:layout_editor_absoluteX="152dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etContrasena"
+        app:layout_constraintWidth_max="200dp"
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

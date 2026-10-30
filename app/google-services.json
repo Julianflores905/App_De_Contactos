@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "404657801710",
-    "project_id": "appcontactos-b01da",
-    "storage_bucket": "appcontactos-b01da.firebasestorage.app"
+    "project_number": "723374930856",
+    "project_id": "appnotas-303a8",
+    "storage_bucket": "appnotas-303a8.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:404657801710:android:337c844052f68fb2baa6ff",
+        "mobilesdk_app_id": "1:723374930856:android:fecef55571b052c8d5fb9d",
         "android_client_info": {
           "package_name": "com.my.first.appdecontactos"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCWOhlA4E_aKP0Vdka3ME21aSY8-Gqzbec"
+          "current_key": "AIzaSyDCVSL_6EAMpXAej5Oi6w8rBPcmvPFLWa4"
         }
       ],
       "services": {

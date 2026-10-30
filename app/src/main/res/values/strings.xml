@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">App de contactos</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="nombre_usuario">Nombre de usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="error_campos_vacios">Por favor, completa todos los campos</string>
+    <string name="inicio_sesion_correcto">¡Sesión iniciada correctamente!</string>
+
+    <string name="mis_notas">Mis Notas</string>
+    <string name="bienvenido_usuario">Bienvenido, %1$s</string>
+    <string name="titulo_nota">Título de la nota</string>
+    <string name="contenido_nota">Escribe tu nota aquí...</string>
+    <string name="guardar_nota">Guardar Nota</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="sin_notas">No tienes notas guardadas aún.</string>
+    <string name="nota_agregada">Nota guardada con éxito</string>
+    <string name="nota_eliminada">Nota eliminada</string>
+    <string name="eliminar_nota">Eliminar nota</string>
+    <string name="error_campos_nota">Ingresa título y contenido para la nota</string>
 </resources>
