@@ -1,21 +1,20 @@
-
 package com.my.first.appdecontactos
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -95,6 +94,7 @@ class RegisterActivity : AppCompatActivity() {
 
         btnRegistrarse.isEnabled = false
 
+        // Etapa 1: Crear el usuario en Firebase Authentication
         auth.createUserWithEmailAndPassword(email, contrasena)
             .addOnSuccessListener { result ->
 
@@ -102,7 +102,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 if (firebaseUser == null) {
                     btnRegistrarse.isEnabled = true
-                    mostrarError("No se pudo obtener el usuario")
+                    mostrarError("No se pudo obtener el usuario registrado")
                     return@addOnSuccessListener
                 }
 
@@ -113,6 +113,7 @@ class RegisterActivity : AppCompatActivity() {
                     "createdAt" to FieldValue.serverTimestamp()
                 )
 
+                // Etapa 2: Guardar el perfil en Firestore
                 db.collection("users")
                     .document(firebaseUser.uid)
                     .set(userData)
@@ -130,34 +131,55 @@ class RegisterActivity : AppCompatActivity() {
                         finish()
                     }
                     .addOnFailureListener { error ->
-
                         btnRegistrarse.isEnabled = true
 
                         Log.e(
                             "REGISTRO_ERROR",
-                            "Error guardando perfil en Firestore",
+                            "Error en Etapa 2: Guardar perfil en Firestore",
                             error
                         )
 
-                        mostrarError(
-                            "La cuenta se creó, pero falló el perfil: ${error.message}"
-                        )
+                        mostrarDialogoError("Etapa 2: Guardar perfil en Firestore", error)
                     }
             }
             .addOnFailureListener { error ->
-
                 btnRegistrarse.isEnabled = true
 
                 Log.e(
                     "REGISTRO_ERROR",
-                    "Código: ${(error as? FirebaseException)?.message}",
+                    "Error en Etapa 1: Crear usuario en Firebase Auth",
                     error
                 )
 
-                mostrarError(
-                    "Error: ${error.javaClass.simpleName}: ${error.message}"
-                )
+                mostrarDialogoError("Etapa 1: Crear usuario en Firebase Auth", error)
             }
+    }
+
+    private fun mostrarDialogoError(etapa: String, exception: Exception) {
+        val builder = StringBuilder()
+        builder.append("Fallo en: ").append(etapa).append("\n\n")
+
+        var current: Throwable? = exception
+        var level = 1
+        while (current != null) {
+            builder.append("[$level] ${current.javaClass.simpleName}\n")
+            builder.append("Mensaje: ${current.message ?: "Sin mensaje"}\n")
+            if (current.localizedMessage != null && current.localizedMessage != current.message) {
+                builder.append("Detalle: ${current.localizedMessage}\n")
+            }
+            builder.append("\n")
+            current = current.cause
+            level++
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle("Detalle del Error de Registro")
+            .setMessage(builder.toString().trim())
+            .setPositiveButton("Entendido") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(true)
+            .show()
     }
 
     private fun mostrarError(mensaje: String) {

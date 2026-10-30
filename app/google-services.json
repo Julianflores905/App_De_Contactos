@@ -7,41 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:723374930856:android:fecef55571b052c8d5fb9d",
-        "android_client_info": {
-          "package_name": "com.my.first.appdecontactos"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "723374930856-7bj3k9ikumtto83c2fkca6sl5hep98c2.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDCVSL_6EAMpXAej5Oi6w8rBPcmvPFLWa4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "723374930856-7bj3k9ikumtto83c2fkca6sl5hep98c2.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:723374930856:android:4850a849782482ffd5fb9d",
         "android_client_info": {
           "package_name": "com.my.first.appdecontactos2"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "723374930856-b55ke597ke8qt9hs3671lo5ed2alpkfp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.my.first.appdecontactos2",
+            "certificate_hash": "c7596b173e6f9d803225e78d738ae1002612ba1a"
+          }
+        },
         {
           "client_id": "723374930856-7bj3k9ikumtto83c2fkca6sl5hep98c2.apps.googleusercontent.com",
           "client_type": 3

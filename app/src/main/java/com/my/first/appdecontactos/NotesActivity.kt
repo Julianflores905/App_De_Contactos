@@ -1,4 +1,3 @@
-
 package com.my.first.appdecontactos
 
 import android.content.Intent
@@ -14,6 +13,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -66,7 +67,7 @@ class NotesActivity : AppCompatActivity() {
         }
 
         uid = currentUser.uid
-        usuario = intent.getStringExtra("EXTRA_USUARIO") ?: "Invitado"
+        usuario = intent.getStringExtra("EXTRA_USUARIO") ?: currentUser.displayName ?: currentUser.email?.substringBefore("@") ?: "Usuario"
 
         tvWelcomeUser = findViewById(R.id.tvWelcomeUser)
         etNoteTitle = findViewById(R.id.etNoteTitle)
@@ -109,11 +110,24 @@ class NotesActivity : AppCompatActivity() {
         }
 
         btnCerrarSesion.setOnClickListener {
-            auth.signOut()
-            volverAlLogin()
+            cerrarSesion()
         }
 
         listenToNotes()
+    }
+
+    private fun cerrarSesion() {
+        // Cerrar sesión en Firebase
+        auth.signOut()
+
+        // Cerrar sesión en Google Sign-In si aplica
+        try {
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+            GoogleSignIn.getClient(this, gso).signOut()
+        } catch (_: Exception) { }
+
+        Toast.makeText(this, "Sesión cerrada correctamente.", Toast.LENGTH_SHORT).show()
+        volverAlLogin()
     }
 
     private fun notesCollection() =

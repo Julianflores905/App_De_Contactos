@@ -5,6 +5,7 @@
     <string name="nombre_usuario">Nombre de usuario</string>
     <string name="contrasena">Contraseña</string>
     <string name="aceptar">Iniciar Sesión</string>
+    <string name="iniciar_sesion_google">Iniciar sesión con Google</string>
     <string name="error_campos_vacios">Por favor, completa todos los campos</string>
     <string name="inicio_sesion_correcto">¡Sesión iniciada correctamente!</string>
     <string name="no_tienes_cuenta">¿No tienes una cuenta? Regístrate aquí</string>

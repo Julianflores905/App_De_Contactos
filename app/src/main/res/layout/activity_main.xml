@@ -145,6 +145,22 @@
                 android:textColor="@color/texto_blanco"
                 android:textSize="15sp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoogleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/azul_superficie"
+                android:text="@string/iniciar_sesion_google"
+                android:textColor="@color/texto_blanco"
+                android:textSize="15sp"
+                app:icon="@drawable/ic_google"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                app:iconTint="@null"
+                app:strokeColor="@color/azul_borde"
+                app:strokeWidth="1dp" />
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
